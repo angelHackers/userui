@@ -1,0 +1,22 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# jscoverage/JSCover
+lib-cov
+
+# istanbul
+coverage
+dist
+node_modules
+npm-debug.log
+Dockerfile2
+
+# sass
+.sass-cache/
+*.css.map
