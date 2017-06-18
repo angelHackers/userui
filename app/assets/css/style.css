@@ -1,4 +1,5 @@
-body{
+/* app */
+body {
   background: url('../img/airplane.jpg') center / cover;
 }
 .logo {
@@ -14,4 +15,17 @@ body{
 }
 .mdl-layout__drawer {
   background-color: rgba(0, 0, 255, 0.89);
+}
+
+/* login */
+.login {
+  width: 80%;
+  margin: 300px auto;
+  text-align: center;
+}
+/* signup */
+.signup {
+  width: 80%;
+  margin: 250px auto;
+  text-align: center;
 }

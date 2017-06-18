@@ -4,9 +4,9 @@ import * as actions from '../../actions/auth';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
-const renderField = ({input, type, placeholder, meta: {touched, error}}) => (
-  <div>
-    <input type={type} placeholder={placeholder} {...input} />
+const renderField = ({input, type, id, placeholder, meta: {touched, error}}) => (
+  <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input id={id} className="mdl-textfield__input" type={type} placeholder={placeholder} {...input} />
     { touched && error && <div>{error}</div> }
   </div>
 );
@@ -25,24 +25,21 @@ class Login extends Component {
     const {handleSubmit} = this.props;
 
     return (
-      <div>
-        <h3>User Login</h3>
+      <div className="login">
         <form role="form" onSubmit={handleSubmit(this.handleFormSubmit)}>
 
-          <div>
-            <Field name="email" component={renderField} type="email" placeholder="Email"/>
-          </div>
+          <Field name="email" component={renderField} type="text" placeholder="Email"/>
 
-          <div>
-            <Field name="password" component={renderField} type="password" placeholder="Password"/>
-          </div>
+          <Field name="password" component={renderField} type="password" placeholder="Password"/>
 
           <div>
             { this.props.errorMessage && this.props.errorMessage.login &&
             <div>{ this.props.errorMessage.login }</div> }
           </div>
 
-          <button type="submit">Login</button>
+          <button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Sign in
+          </button>
 
         </form>
       </div>

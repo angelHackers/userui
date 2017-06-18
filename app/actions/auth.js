@@ -32,13 +32,15 @@ export function registerUser(props) {
   return function (dispatch) {
     axios.post(`${USER_API_URL}/register`, props, config())
       .then((response) => {
+        console.log(response);
         dispatch({
             type: SIGNUP_IN_PROGRESS,
-            data: {form: props, userId: response.data.userId}
+            data: {userId: response.data.userId}
         });
+        browserHistory.push('/userui/home');
       })
       .catch(error => {
-        dispatch(authError(SIGNUP_FAILURE, error.response.data.error))
+        dispatch(authError(SIGNUP_FAILURE, 'error'))
       });
   }
 }
@@ -49,9 +51,12 @@ export function signinUser(props) {
   return function (dispatch) {
     axios.post(`${USER_API_URL}/login`, {email, password}, config())
       .then(response => {
+        console.log(response);
         dispatch({ type: AUTH_USER });
 
-        browserHistory.push('/ui/profile');
+
+
+        browserHistory.push('/userui/home');
       })
       .catch(() => dispatch(authError(SIGNIN_FAILURE, "Login credentials failed!")));
   }

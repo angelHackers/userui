@@ -4,9 +4,9 @@ import * as actions from '../../actions/auth';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
-const renderField = ({input, type, placeholder, meta: {touched, error}}) => (
-  <div>
-    <input type={type} placeholder={placeholder} {...input} />
+const renderField = ({input, type, id, placeholder, meta: {touched, error}}) => (
+  <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input id={id} className="mdl-textfield__input" type={type} placeholder={placeholder} {...input} />
     { touched && error && <div>{error}</div> }
   </div>
 );
@@ -25,32 +25,25 @@ class Signup extends Component {
     const {handleSubmit} = this.props;
 
     return (
-      <div>
-        <h3>User Signup</h3>
+      <div className="signup">
         <form role="form" onSubmit={handleSubmit(this.handleFormSubmit)}>
 
-          <div>
-            <Field name="name" component={renderField} type="text" placeholder="Name"/>
-          </div>
+          <Field name="name" component={renderField} type="text" placeholder="Name"/>
+
+          <Field name="email" component={renderField} type="text" placeholder="Email"/>
+
+          <Field name="password" component={renderField} type="password" placeholder="Password"/>
+
+          <Field name="interests" component={renderField} type="text" placeholder="Interests"/>
 
           <div>
-            <Field name="email" component={renderField} type="email" placeholder="Email"/>
+            { this.props.errorMessage && this.props.errorMessage.login &&
+            <div>{ this.props.errorMessage.login }</div> }
           </div>
 
-          <div>
-            <Field name="password" component={renderField} type="password" placeholder="Password"/>
-          </div>
-
-          <div>
-            <Field name="description" component={renderField} type="text" placeholder="Interests"/>
-          </div>
-
-          <div>
-            { this.props.errorMessage && this.props.errorMessage.signup &&
-            <div>{ this.props.errorMessage.signup }</div> }
-          </div>
-
-          <button type="submit">Sign Up</button>
+          <button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            Sign Up
+          </button>
 
         </form>
       </div>
