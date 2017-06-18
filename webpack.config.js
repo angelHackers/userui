@@ -3,7 +3,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const extractCss = new ExtractTextPlugin({
+  filename: "[name].[contenthash].css",
+  disable: process.env.NODE_ENV === "development"
+});
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -19,15 +24,12 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    resolve: {
-      modulesDirectories: [path.resolve(__dirname, 'node_modules')]
-    },
     alias: {
       css: path.join(__dirname, './app/assets/css'),
       img: path.join(__dirname, './app/assets/img'),
       js: path.join(__dirname, './app/assets/js')
     },
-    extensions: ['', '.ts', '.tsx', '.js']
+    extensions: ['.js', '.jsx', '.json']
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -37,9 +39,8 @@ module.exports = {
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    })
+    new webpack.NoEmitOnErrorsPlugin(),
+    extractCss
   ],
   module: {
     loaders: [
@@ -57,6 +58,10 @@ module.exports = {
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'})
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|svg|png|jpg)(\?[a-z0-9#=&.]+)?$/,
+        loader: 'url-loader'
+      }
     ]
   }
 };

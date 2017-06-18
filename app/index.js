@@ -8,8 +8,14 @@ import { AUTH_USER } from './actions/types/index';
 import reducers from './reducers';
 import routes from './routes';
 
+// Material Design
+import material from 'js/material.min.js';
+import 'css/material.min.css';
+import 'css/style.css';
+
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
+
 
 ReactDOM.render(
   <Provider store={store}>

@@ -18,11 +18,6 @@ function config(){
     responseType: 'json',
     withCredentials: true
   }
-
-  let token = localStorage.getItem('access_token') || null
-  if(token){
-    conf.headers['x-access-token'] = token;
-  }
   return conf;
 }
 

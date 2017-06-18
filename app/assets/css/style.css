@@ -1,0 +1,17 @@
+body{
+  background: url('../img/airplane.jpg') center / cover;
+}
+.logo {
+  background: url('../img/Logo.png');
+  background-repeat: no-repeat;
+  background-size: 268px;
+  background-position-x: 50%;
+  background-position-y: 5%;
+}
+.mdl-layout__container {
+  background-color: rgba(247, 247, 247, 0.76);
+  max-width: 400px;
+}
+.mdl-layout__drawer {
+  background-color: rgba(0, 0, 255, 0.89);
+}
