@@ -7,9 +7,9 @@ class Header extends Component {
     return (
       <div className="mdl-layout__drawer">
         <nav className="mdl-navigation">
-          <a className="mdl-navigation__link" href="">Home</a>
-          <a className="mdl-navigation__link" href="">Profile</a>
-          <a className="mdl-navigation__link" href="">Log out</a>
+          <a className="mdl-navigation__link" href="/userui/home">Home</a>
+          <a className="mdl-navigation__link" href="/userui/profile">Profile</a>
+          <a className="mdl-navigation__link" href="/userui/logout">Log out</a>
         </nav>
       </div>
     )

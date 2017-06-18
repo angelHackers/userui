@@ -1,16 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-class Main extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
   }
 
-  // JUST A TEMPLATE
-
   render() {
     return (
-      <h1>MAIN</h1>
+      <h1>Profile</h1>
     )
   }
 }
@@ -18,4 +16,4 @@ class Main extends Component {
 function mapStateToProps(state) {
   return {};
 }
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps)(Profile);

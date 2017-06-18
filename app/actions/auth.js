@@ -63,7 +63,7 @@ export function signinUser(props) {
 }
 
 export function signoutUser() {
-  browserHistory.push('/ui/login');
+  browserHistory.push('/userui/login');
   return {
     type: UNAUTH_USER,
   }

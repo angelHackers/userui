@@ -9,7 +9,7 @@ export default class App extends Component {
         <div className="demo-layout-transparent mdl-layout mdl-js-layout logo">
           <Header />
           <main className="mdl-layout__content">
-          {this.props.children}
+            {this.props.children}
           </main>
         </div>
       </div>
